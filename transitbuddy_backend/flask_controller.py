@@ -9,8 +9,13 @@ from comment import Comment
 from line import Line
 from mta import get_train_time
 from user import User
-from util import (all_stations, encrypt_password, get_stations, get_stop_id,
-                  get_weather_key)
+from util import (
+    all_stations,
+    encrypt_password,
+    get_stations,
+    get_stop_id,
+    get_weather_key,
+)
 
 dbpath = "./data/transit.db"
 table3 = "comment"
