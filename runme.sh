@@ -5,4 +5,9 @@ set -x
 
 cd "${here}"
 
-./.venv/bin/python3 flask_controller.py
+if ! [ -x $here/.venv/bin/flask ]
+then
+   poetry install
+fi
+
+./.venv/bin/python3 transitbuddy_backend/flask_controller.py
