@@ -1,5 +1,6 @@
 import time
 from datetime import datetime
+import pathlib
 
 from flask import Flask, jsonify, request
 from flask_cors import CORS
@@ -18,7 +19,9 @@ app = Flask(__name__)
 CORS(app)
 
 
-with open("/home/richarda/apikeys/mtapikey", "r") as file_object:
+__here__ = pathlib.Path(__file__).parent.resolve()
+
+with open(__here__ / "apikey", "r") as file_object:
     api_key = file_object.readline().strip()
 
 
