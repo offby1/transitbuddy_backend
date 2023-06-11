@@ -348,17 +348,18 @@ files = [
 ]
 
 [[package]]
-name = "protobuf-to-dict"
-version = "0.1.0"
-description = "A teeny Python library for creating Python dicts from protocol buffers and the reverse. Useful as an intermediate step before serialisation (e.g. to JSON)."
+name = "protobuf3-to-dict"
+version = "0.1.5"
+description = "Ben Hodgson: A teeny Python library for creating Python dicts from protocol buffers and the reverse. Useful as an intermediate step before serialisation (e.g. to JSON). Kapor: upgrade it to PB3 and PY3, rename it to protobuf3-to-dict"
 optional = false
 python-versions = "*"
 files = [
-    {file = "protobuf-to-dict-0.1.0.tar.gz", hash = "sha256:dd152977f4c39942d3e1a233f6b3df35c548fffddfeda1fb88cb3b52a3b366e7"},
+    {file = "protobuf3-to-dict-0.1.5.tar.gz", hash = "sha256:1e42c25b5afb5868e3a9b1962811077e492c17557f9c66f0fe40d821375d2b5a"},
 ]
 
 [package.dependencies]
 protobuf = ">=2.3.0"
+six = "*"
 
 [[package]]
 name = "python-dotenv"
@@ -459,4 +460,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "6b59846ccf82ce9d0b8e4b61665422dc125964df6ac3f2007e7f61ccfad80308"
+content-hash = "61c3cb503f3a4f94f9598fc65845d416596bb156ff4176abd6168b44ea4614ee"

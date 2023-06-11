@@ -1,4 +1,5 @@
 from google.transit import gtfs_realtime_pb2
+import pathlib
 import requests 
 import time
 import os
@@ -19,7 +20,9 @@ tablename1 = "station"
 
 load_dotenv(find_dotenv())
 
-with open("/home/richarda/apikeys/mtapikey","r") as file_object:
+__here__ = pathlib.Path(__file__).parent.resolve()
+
+with open(__here__ / "apikey","r") as file_object:
     api_key = file_object.readline().strip()
 
 def get_realtime_data(key, train): #GETS DATA FROM API AND PARSES  ALL lines

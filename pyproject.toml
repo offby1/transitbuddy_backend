@@ -14,8 +14,8 @@ chardet = "^5.1.0"
 gtfs-realtime-bindings = "^1.0.0"
 python-dotenv = "^1.0.0"
 protobuf = "^4.23.2"
-protobuf-to-dict = "^0.1.0"
 requests = "^2.31.0"
+protobuf3-to-dict = "^0.1.5"
 
 
 [build-system]
