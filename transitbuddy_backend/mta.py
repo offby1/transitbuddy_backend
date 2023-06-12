@@ -1,18 +1,20 @@
-from google.transit import gtfs_realtime_pb2
-import pathlib
-import requests
-import os
-from protobuf_to_dict import protobuf_to_dict
 import datetime
+import os
+
+import dotenv
+import platformdirs
+import requests
+from google.transit import gtfs_realtime_pb2
+from protobuf_to_dict import protobuf_to_dict
 
 DIR = os.path.dirname(__file__)
 DBPATH = os.path.join(DIR, "transit.db")
 tablename1 = "station"
 
-__here__ = pathlib.Path(__file__).parent.resolve()
+dotenv.load_dotenv(dotenv_path=platformdirs.user_config_dir(appname="com.github.ra1993.transitbuddy"))
+# https://api.mta.info/#/AccessKey
 
-with open(__here__ / "apikey", "r") as file_object:
-    api_key = file_object.readline().strip()
+api_key = os.environ.get("MTA_API_KEY", "")
 
 
 def get_realtime_data(key, train):  # GETS DATA FROM API AND PARSES  ALL lines

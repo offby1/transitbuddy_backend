@@ -16,6 +16,7 @@ python-dotenv = "^1.0.0"
 protobuf = "^4.23.2"
 requests = "^2.31.0"
 protobuf3-to-dict = "^0.1.5"
+platformdirs = "^3.5.3"
 
 
 [build-system]
