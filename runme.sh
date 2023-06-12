@@ -1,6 +1,6 @@
 #!/bin/sh
 
-here=$(cd "$(dirname $0)" && pwd)
+here="$(cd "$(dirname "$0")" && pwd)"
 set -x
 
 cd "${here}"
