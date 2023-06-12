@@ -1,4 +1,5 @@
 import csv
+import logging
 import pathlib
 import random
 import string
@@ -7,7 +8,12 @@ from csv import reader
 import bcrypt
 # encoding libraries
 import chardet
+from flask.logging import default_handler
 import requests
+
+_log = logging.getLogger(__name__)
+_log.setLevel(logging.DEBUG)
+_log.addHandler(default_handler)
 
 __here__ = pathlib.Path(__file__).parent.resolve()
 
