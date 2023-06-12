@@ -3,12 +3,13 @@ import csv
 from csv import reader
 import bcrypt
 import string
+import pathlib
 import random
 
 # encoding libraries
 import chardet
-from collections import OrderedDict
 
+__here__ = pathlib.Path(__file__).parent.resolve()
 
 url = "http://web.mta.info/developers/data/nyct/subway/Stations.csv"
 
@@ -43,7 +44,7 @@ def scrape_data(url):
 
 
 def open_dataset(
-    file="stationlocations.csv", header=True
+    file, header=True
 ):  # converts csv data to a list
     with open(file, "r") as f_object:
         read_file = reader(f_object)
@@ -56,7 +57,7 @@ def open_dataset(
             return data
 
 
-all_data, data, header = open_dataset()
+all_data, data, header = open_dataset(__here__ / "../stationlocations.csv")
 all_data = all_data
 
 
