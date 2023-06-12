@@ -16,7 +16,7 @@ def schema(db=DBPATH):
                 pk INTEGER PRIMARY KEY AUTOINCREMENT,
                 username VARCHAR UNIQUE,
                 encrypted_password VARCHAR,
-                email VARCHAR UNIQUE, 
+                email VARCHAR UNIQUE,
                 f_name VARCHAR,
                 l_name VARCHAR,
                 token VARCHAR
@@ -28,7 +28,7 @@ def schema(db=DBPATH):
             """     CREATE TABLE user_transit(
                 pk INTEGER PRIMARY KEY AUTOINCREMENT,
                 line VARCHAR,
-                station VARCHAR, 
+                station VARCHAR,
                 user_pk INTEGER,
                 line_pk VARCHAR,
                 FOREIGN KEY (user_pk) REFERENCES user(pk),
@@ -50,7 +50,7 @@ def schema(db=DBPATH):
                 pk INTEGER PRIMARY KEY AUTOINCREMENT,
                 stop_id VARCHAR,
                 station_name VARCHAR
-                
+
             );"""
         )
 
@@ -64,7 +64,7 @@ def schema(db=DBPATH):
 
                 user_pk INTEGER,
                 line_pk INTEGER,
-                FOREIGN KEY (line_pk) REFERENCES line(pk), 
+                FOREIGN KEY (line_pk) REFERENCES line(pk),
                 FOREIGN KEY (user_pk) REFERENCES user(pk)
             );"""
         )
