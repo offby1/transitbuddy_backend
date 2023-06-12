@@ -10,6 +10,8 @@ then
    poetry install
 fi
 
+$here/.venv/bin/python $here/data/schema.py
+
 ./.venv/bin/python3 transitbuddy_backend/flask_controller.py &
 
 sleep 1

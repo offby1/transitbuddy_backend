@@ -5,14 +5,13 @@ DIR = os.path.dirname(__file__)
 DBPATH = os.path.join(DIR, "transit.db")
 
 
-def schema(db=DBPATH):
+def create_tables(db=DBPATH):
     with sqlite3.connect(db) as conn:
         cur = conn.cursor()
 
-        cur.execute("""DROP TABLE IF EXISTS user""")
         cur.execute(
             """
-                CREATE TABLE user (
+                CREATE TABLE IF NOT EXISTS user (
                 pk INTEGER PRIMARY KEY AUTOINCREMENT,
                 username VARCHAR UNIQUE,
                 encrypted_password VARCHAR,
@@ -23,9 +22,8 @@ def schema(db=DBPATH):
             );"""
         )
 
-        cur.execute("""DROP TABLE IF EXISTS user_transit""")
         cur.execute(
-            """     CREATE TABLE user_transit(
+            """     CREATE TABLE IF NOT EXISTS user_transit(
                 pk INTEGER PRIMARY KEY AUTOINCREMENT,
                 line VARCHAR,
                 station VARCHAR,
@@ -36,17 +34,15 @@ def schema(db=DBPATH):
             );"""
         )
 
-        cur.execute("""DROP TABLE IF EXISTS line""")
         cur.execute(
-            """     CREATE TABLE line(
+            """     CREATE TABLE IF NOT EXISTS line(
                 pk INTEGER PRIMARY KEY AUTOINCREMENT,
                 line_name VARCHAR
             );"""
         )
 
-        cur.execute("""DROP TABLE IF EXISTS station""")
         cur.execute(
-            """     CREATE TABLE station(
+            """     CREATE TABLE IF NOT EXISTS station(
                 pk INTEGER PRIMARY KEY AUTOINCREMENT,
                 stop_id VARCHAR,
                 station_name VARCHAR
@@ -54,10 +50,9 @@ def schema(db=DBPATH):
             );"""
         )
 
-        cur.execute("""DROP TABLE IF EXISTS comment""")
         cur.execute(
             """
-                CREATE TABLE comment(
+                CREATE TABLE IF NOT EXISTS comment(
                 pk INTEGER PRIMARY KEY AUTOINCREMENT,
                 comment VARCHAR,
                 time TIME,
@@ -71,4 +66,4 @@ def schema(db=DBPATH):
 
 
 if __name__ == "__main__":
-    schema()
+    create_tables()
