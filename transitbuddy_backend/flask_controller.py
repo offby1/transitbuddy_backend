@@ -97,13 +97,7 @@ def logout():
 # ------------------------------------------train,station and times
 @app.route("/train/<letter>", methods=["POST", "GET"])
 def get_train_stations(letter):
-    if request.method == "POST":
-        stations = get_stations(letter)
-    # print(stations)
-
-    if request.method == "GET":
-        return {"stations": stations}
-    return {"stations": stations}
+    return {"stations": get_stations(letter.upper())}
 
 
 @app.route("/incoming/time/<train>/<station>", methods=["GET"])
