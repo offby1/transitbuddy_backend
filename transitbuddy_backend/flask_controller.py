@@ -45,7 +45,7 @@ def register():
     try:
         new_user.save()
 
-    except:
+    except Exception:
         time.sleep(5)
         return jsonify({"error": error_message}), 500
     finally:
@@ -61,17 +61,18 @@ def login():
     password = data["password"]
 
     user_account = User.login(username, password)
+    app.logger.debug(f"{user_account=}")
+    if not user_account:
+        return jsonify({"error": error_message}), 409  # return to login'
+
     user_account.get_token()  # creates token when user logs in
 
-    if user_account == False:
-        return jsonify({"error": error_message})  # return to login'
-    else:
-        return jsonify({"token": user_account.token})
+    return jsonify({"token": user_account.token})
 
 
 @app.route("/token/<token>", methods=["GET"])
 def token_auth(token):
-    user_account = User.select_token(f"""WHERE token =?""", (token,))
+    user_account = User.select_token("""WHERE token =?""", (token,))
 
     user_account = {
         "pk": user_account.pk,
