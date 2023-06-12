@@ -1,8 +1,6 @@
-import sqlite3
 import os
-import csv
+import sqlite3
 from csv import reader
-
 
 DIR = os.path.dirname(__file__)
 DBPATH = os.path.join(DIR, "transit.db")
@@ -17,7 +15,6 @@ def open_dataset(
 
         stop_id = [[x[0] for x in data]]
         station = [[y[1] for y in data]]
-        train = [[z[2] for z in data]]
 
         station_dict = {}
         train_list = []
@@ -71,21 +68,6 @@ def seed(dbpath=DBPATH):
             values = t
 
             cur.execute(sql, values)
-
-        # #inserting comments and timestamp
-        # comment_list = ['this is comment 1', 'this is comment 2', 'this is comment 3']
-        # time_list = ['March 25 2020 10:42pm', 'March 26 2020 10:30pm', 'March 27 2020  10:36pm']
-        # for c in comment_list:
-        #     sql2 = ("""INSERT INTO comment (comment) VALUES (?)""")
-        #     values2 = (c)
-
-        #     cur.execute(sql2, values2)
-
-        # for ti in time_list:
-        #     sql3 = ("""INSERT INTO comment (time) VALUES (?)""")
-        #     values3 = (ti)
-
-        #     cur.execute(sql3, values3)
 
 
 if __name__ == "__main__":

@@ -72,8 +72,6 @@ def station_data(all_data):
     stop_id = stop_id[0][1:]
     station = station[0][1:]
 
-    station_id_data = stop_id + station + train
-
     # writes it to csv
     # with open('stationdata.csv', 'w') as file:
     #         writer = csv.writer(file)
@@ -162,7 +160,3 @@ def get_trains_for_station():
     id_trains = [f"{key} - {value}" for key, value in stopid_train.items()]
 
     return id_trains
-
-
-if __name__ == "__main__":
-    app.run(debug=True)

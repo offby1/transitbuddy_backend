@@ -1,6 +1,5 @@
 import time
 from datetime import datetime
-import pathlib
 
 from flask import Flask, jsonify, request
 from flask_cors import CORS
@@ -17,17 +16,8 @@ from util import (
     get_weather_key,
 )
 
-dbpath = "./data/transit.db"
-table3 = "comment"
-
 app = Flask(__name__)
 CORS(app)
-
-
-__here__ = pathlib.Path(__file__).parent.resolve()
-
-with open(__here__ / "apikey", "r") as file_object:
-    api_key = file_object.readline().strip()
 
 
 @app.route("/register", methods=["POST"])
@@ -57,7 +47,7 @@ def register():
 
     except:
         time.sleep(5)
-        return jsonify({"error": error_message})
+        return jsonify({"error": error_message}), 500
     finally:
         return jsonify({"Thank You:": new_user.username})
 
