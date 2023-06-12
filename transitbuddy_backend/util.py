@@ -1,13 +1,13 @@
-import requests
 import csv
-from csv import reader
-import bcrypt
-import string
 import pathlib
 import random
+import string
+from csv import reader
 
+import bcrypt
 # encoding libraries
 import chardet
+import requests
 
 __here__ = pathlib.Path(__file__).parent.resolve()
 
@@ -22,7 +22,7 @@ def find_encoding(content):
 
 
 def decode_data(content):
-    encoding = find_encoding(content)
+    find_encoding(content)
     decoded_data = content.decode(encoding="cp1252")
 
     return decoded_data
@@ -43,9 +43,7 @@ def scrape_data(url):
             writer.writerows(my_list)
 
 
-def open_dataset(
-    file, header=True
-):  # converts csv data to a list
+def open_dataset(file, header=True):  # converts csv data to a list
     with open(file, "r") as f_object:
         read_file = reader(f_object)
         data = list(read_file)
@@ -58,7 +56,6 @@ def open_dataset(
 
 
 all_data, data, header = open_dataset(__here__ / "../stationlocations.csv")
-all_data = all_data
 
 
 def station_data(all_data):
@@ -71,11 +68,6 @@ def station_data(all_data):
 
     stop_id = stop_id[0][1:]
     station = station[0][1:]
-
-    # writes it to csv
-    # with open('stationdata.csv', 'w') as file:
-    #         writer = csv.writer(file)
-    #         writer.writerows(station_id_data)
 
     train_list = []
 
